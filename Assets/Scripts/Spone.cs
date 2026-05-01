@@ -51,7 +51,7 @@ public class SpawnInPlane : MonoBehaviour
                 attempts++;
             }
 
-            // 失敗しすぎたら諦める（安全対策）
+            // 無限ループ防止用
             if (attempts >= maxAttempts)
             {
                 Debug.LogWarning("スポーン位置が見つかりませんでした");

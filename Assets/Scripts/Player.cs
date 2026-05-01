@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public Transform firePoint;
+    public GameObject bulletPrefab; //　弾のプレハブ
+    public Transform firePoint ;//　弾を撃つ位置
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {      
-        var current2 = Keyboard.current;
+        var current2 = Keyboard.current; //　キーボードの入力を取得（射撃用）
 
         Move();
 
@@ -24,15 +24,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Move()
+    private void Move()//  プレイヤーの移動
     {
-        var current = Keyboard.current;
+        var current = Keyboard.current; //  キーボードの入力を取得（移動用）
 
         if (current == null)
         {
             return;
         }
 
+        // 上下左右の移動操作
         if (current.upArrowKey.isPressed)
         {
             transform.position += Vector3.forward * Time.deltaTime;
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void Shoot() //  弾を撃つ
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }

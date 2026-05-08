@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     public GameObject bulletPrefab; //　弾のプレハブ
     public Transform firePoint ;//　弾を撃つ位置
+    int moveSpeed = 5;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,27 +37,36 @@ public class Player : MonoBehaviour
         // 上下左右の移動操作
         if (current.upArrowKey.isPressed)
         {
-            transform.position += Vector3.forward * Time.deltaTime;
+            transform.position += Vector3.forward * Time.deltaTime * moveSpeed;
         }
 
         if (current.downArrowKey.isPressed)
         {
-            transform.position += Vector3.back * Time.deltaTime;
+            transform.position += Vector3.back * Time.deltaTime * moveSpeed;
         }
 
         if (current.leftArrowKey.isPressed)
         {
-            transform.position += Vector3.left * Time.deltaTime;
+            transform.position += Vector3.left * Time.deltaTime* moveSpeed;
         }
 
         if (current.rightArrowKey.isPressed)
         {
-            transform.position += Vector3.right * Time.deltaTime;
+            transform.position += Vector3.right * Time.deltaTime * moveSpeed;
         }
     }
 
     void Shoot() //  弾を撃つ
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

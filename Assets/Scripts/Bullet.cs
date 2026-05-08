@@ -17,11 +17,6 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(collision.gameObject); // “G‚ğÁ‚·
-        }
-
-        Destroy(gameObject); // ’e‚àÁ‚·
+        Destroy(gameObject); // ’e‚ğÁ‚·
     }
 }

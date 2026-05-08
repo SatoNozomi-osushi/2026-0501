@@ -7,6 +7,7 @@ public class SpawnInPlane : MonoBehaviour
     public Transform player;
 
     public int spawnCount = 10;
+    public int spawned = 0;
     public float minDistanceFromPlayer = 5f; // ç≈í·ãóó£
 
     void Start()
@@ -14,13 +15,17 @@ public class SpawnInPlane : MonoBehaviour
         Spawn();
     }
 
-    void Spawn()
+    private void Update()
+    {
+        
+    }
+    public void Spawn()
     {
         Vector3 center = plane.position;
         float width = plane.localScale.x * 10f;
         float height = plane.localScale.z * 10f;
 
-        int spawned = 0;
+ 
         int maxAttempts = 100; // ñ≥å¿ÉãÅ[Évñhé~
 
         while (spawned < spawnCount)
